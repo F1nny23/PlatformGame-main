@@ -1,0 +1,7 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[ext_resource path="res://Fonts/Gready_PERSONAL_USE_ONLY-Regular.otf" type="DynamicFontData" id=1]
+
+[resource]
+size = 100
+font_data = ExtResource( 1 )

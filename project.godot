@@ -13,11 +13,17 @@ config_version=4
 config/name="Platform Game-main"
 config/icon="res://Player/icon.png"
 
+[autoload]
+
+MainMenu="*res://MainMenu.tscn"
+
 [display]
 
 window/size/width=1920
 window/size/height=1080
 window/size/fullscreen=true
+window/size/test_width=1471
+window/size/test_height=869
 
 [importer_defaults]
 
