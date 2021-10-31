@@ -17,10 +17,6 @@ func _process(delta):
 			target = owner.get_node("player")
 			zoomed = true
 	
-	
-	if zoomed:
-		zoom = zoom.move_toward(Vector2(0.3, 0.3), .03)
-		position = position.move_toward(target.global_position, 1000)
 		
 		
 	else:

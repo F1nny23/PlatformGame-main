@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fonts/Gready_PERSONAL_USE_ONLY-Regular.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://MainMenu.gd" type="Script" id=2]
-[ext_resource path="res://MainMenu.tres" type="DynamicFont" id=3]
+[ext_resource path="res://levels/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/MainMenu.tres" type="DynamicFont" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -27,9 +27,10 @@ margin_bottom = 1080.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 707.0
-margin_top = 337.0
+margin_top = 314.0
 margin_right = 1212.0
-margin_bottom = 743.0
+margin_bottom = 766.0
+custom_constants/separation = 50
 
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
 margin_right = 505.0
@@ -42,9 +43,9 @@ custom_fonts/font = ExtResource( 3 )
 text = "TitleScreen"
 
 [node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 119.0
+margin_top = 165.0
 margin_right = 505.0
-margin_bottom = 406.0
+margin_bottom = 452.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2"]
 margin_left = 88.0

@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://layers/sky.png" type="Texture" id=3]
+[ext_resource path="res://layers/far_mountains.png" type="Texture" id=6]
+[ext_resource path="res://layers/grassy_mountains.png" type="Texture" id=7]
+[ext_resource path="res://layers/clouds_mid_t.png" type="Texture" id=8]
+
+[node name="BackWorld2" type="Node"]
+
+[node name="Sky" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Sky"]
+position = Vector2( 960, 896 )
+motion_scale = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="Sky/ParallaxLayer"]
+position = Vector2( 0, -350 )
+scale = Vector2( 5, 5 )
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="FarHills" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="FarHills"]
+position = Vector2( 960, 896 )
+motion_scale = Vector2( 0.2, 0 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="FarHills/ParallaxLayer"]
+position = Vector2( 0, -350 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 6 )
+
+[node name="Hills" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Hills"]
+position = Vector2( 960, 896 )
+motion_scale = Vector2( 0.4, 0 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="Hills/ParallaxLayer"]
+position = Vector2( 0, -350 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 7 )
+
+[node name="Clouds" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Clouds"]
+position = Vector2( 960, 896 )
+motion_scale = Vector2( 0, 0 )
+motion_mirroring = Vector2( 1920, 0 )
+
+[node name="Sprite" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 0, -350 )
+scale = Vector2( 5, 5 )
+texture = ExtResource( 8 )

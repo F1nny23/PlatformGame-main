@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://levels/BackWorld2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Fonts/Gready_PERSONAL_USE_ONLY-Regular.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://Quit.gd" type="Script" id=5]
+[ext_resource path="res://msc/Camera2D.gd" type="Script" id=6]
+
+[sub_resource type="TileSet" id=62]
+
+[sub_resource type="DynamicFont" id=61]
+size = 48
+font_data = ExtResource( 4 )
+
+[node name="World2" type="Node"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 62 )
+cell_size = Vector2( 32, 32 )
+cell_custom_transform = Transform2D( 64, 64, 0, 0, 0, 0 )
+cell_tile_origin = 2
+format = 1
+
+[node name="Label" type="Button" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -580.654
+margin_top = -357.572
+margin_right = -465.654
+margin_bottom = -229.572
+custom_fonts/font = SubResource( 61 )
+text = "QUIT"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 960, 544 )
+current = true
+limit_left = 0
+limit_right = 3935
+smoothing_enabled = true
+script = ExtResource( 6 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 128, 96 )
+
+[node name="BackWorld2" parent="." instance=ExtResource( 1 )]
+
+[connection signal="pressed" from="Label" to="Label" method="_on_Label_pressed"]
