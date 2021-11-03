@@ -3,7 +3,7 @@ onready var selector_one = $CenterContainer/VBoxContainer/CenterContainer2/VBoxC
 onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer/Selector
 onready var selector_three = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/Selector
 
-const first_scene = preload("res://World.tscn")
+const first_scene = preload("res://levels/World2.tscn")
 
 var current_selection = 0
 
