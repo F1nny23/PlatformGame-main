@@ -1,14 +1,38 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://platform_metroidvania asset pack v1.01/platform_metroidvania asset pack v1.01/miscellaneous sprites/trap_suspended_anim_strip_18.png" type="Texture" id=1]
+[ext_resource path="res://SwingingTrap.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Swing"
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( -101.5, -0.25, 0, 0.25, 0, 104, -0.25, 0, 0.25, 0, -104, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
 
 [node name="SwingingTrap" type="Node2D"]
+rotation = -1.77151
+scale = Vector2( 3, 3 )
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 15.977 )
 texture = ExtResource( 1 )
+hframes = 18
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PoolVector2Array( -3, 15, -8, 15, -12, 19, -8, 23, -12, 28, -9, 31, -13, 35, -9, 38, -12, 44, -7, 48, 7, 48, 12, 44, 8, 39, 12, 36, 9, 32, 12, 28, 9, 23, 13, 19, 8, 15, 3, 15 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Swing" type="AnimationPlayer" parent="."]
+anims/Swing = SubResource( 1 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
