@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://pixel_platformer_player/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -118,6 +118,9 @@ tracks/0/keys = {
 "values": [ 42, 43, 44, 45, 46, 47, 48, 49 ]
 }
 
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 5.09921, 10 )
+
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 5.28784, 14.5504 )
 
@@ -132,7 +135,7 @@ scale = Vector2( 0.727272, 0.727273 )
 texture = ExtResource( 1 )
 hframes = 14
 vframes = 19
-frame = 43
+frame = 143
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/Crouch = SubResource( 1 )
@@ -143,7 +146,20 @@ anims/Idle = SubResource( 5 )
 anims/Jump = SubResource( 6 )
 anims/Run = SubResource( 7 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionCrouch" type="CollisionShape2D" parent="."]
+position = Vector2( 0.5, 20.5 )
+shape = SubResource( 9 )
+
+[node name="CollisionNormal" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( -0.198425, 15.874 )
 shape = SubResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2( -0.198425, 15.874 )
+shape = SubResource( 8 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

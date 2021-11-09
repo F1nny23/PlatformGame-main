@@ -20,17 +20,17 @@ scale = Vector2( 5, 5 )
 z_as_relative = false
 texture = ExtResource( 3 )
 
-[node name="FarHills" type="ParallaxBackground" parent="."]
+[node name="Clouds" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="FarHills"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Clouds"]
 position = Vector2( 960, 896 )
-motion_scale = Vector2( 0.2, 0 )
+motion_scale = Vector2( 0, 0 )
 motion_mirroring = Vector2( 1920, 0 )
 
-[node name="Sprite" type="Sprite" parent="FarHills/ParallaxLayer"]
-position = Vector2( 0, -913.634 )
+[node name="Sprite" type="Sprite" parent="Clouds/ParallaxLayer"]
+position = Vector2( 4, -1272.68 )
 scale = Vector2( 5, 5 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 
 [node name="Hills" type="ParallaxBackground" parent="."]
 
@@ -44,14 +44,14 @@ position = Vector2( 8.47571, -900.921 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 7 )
 
-[node name="Clouds" type="ParallaxBackground" parent="."]
+[node name="FarHills" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Clouds"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="FarHills"]
 position = Vector2( 960, 896 )
-motion_scale = Vector2( 0, 0 )
+motion_scale = Vector2( 0.2, 0 )
 motion_mirroring = Vector2( 1920, 0 )
 
-[node name="Sprite" type="Sprite" parent="Clouds/ParallaxLayer"]
-position = Vector2( 8.47571, -896.683 )
+[node name="Sprite" type="Sprite" parent="FarHills/ParallaxLayer"]
+position = Vector2( 4, -677.634 )
 scale = Vector2( 5, 5 )
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )

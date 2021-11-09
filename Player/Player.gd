@@ -2,7 +2,9 @@ extends KinematicBody2D
 
 const UP = Vector2(0, -1)
 const GRAVITY = 20
-const SPEED = 250
+const MOVE_SPEED = 250
+const CROUCH_SPEED = 100
+onready var SPEED = MOVE_SPEED
 const JUMP_HEIGHT = -500
 
 var motion = Vector2()
@@ -40,15 +42,28 @@ func update_animation():
 		if motion.x == 0: 
 			$Sprite/AnimationPlayer.play("Idle")
 		elif motion.x != 0:
-			$Sprite/AnimationPlayer.play("Run")
+			if Input.is_action_pressed("ui_down"):
+				$Sprite/AnimationPlayer.play("Crouch")
+				SPEED = CROUCH_SPEED
+				$CollisionCrouch.disabled = false
+				$CollisionNormal.disabled = true
+			else:
+				$Sprite/AnimationPlayer.play("Run")
+				SPEED = MOVE_SPEED
+				$CollisionCrouch.disabled = true
+				$CollisionNormal.disabled = false
 			if motion.x <0:
 				$Sprite.flip_h = true
 			elif motion.x >0:
 				$Sprite.flip_h = false
 	if not is_on_floor():
 		$Sprite/AnimationPlayer.play("Jump")
-	
-	if Input.is_action_pressed("ui_down"):
-		$Sprite/AnimationPlayer.play("Crouch")
+
+		
 		 
-	
+
+
+
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("Death"):
+		get_tree().reload_current_scene() # Replace with function body.
