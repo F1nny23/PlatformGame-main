@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://pixel_platformer_player/player_sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -18,6 +18,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 140, 141, 142, 143, 144, 145, 146, 147 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Area2D/CollisionNormal:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Area2D/CollisionCrouch:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -102,6 +126,9 @@ tracks/0/keys = {
 "values": [ 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125 ]
 }
 
+[sub_resource type="Animation" id=10]
+length = 0.001
+
 [sub_resource type="Animation" id=7]
 length = 0.8
 loop = true
@@ -117,14 +144,38 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 42, 43, 44, 45, 46, 47, 48, 49 ]
 }
-
-[sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 5.09921, 10 )
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Area2D/CollisionCrouch:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Area2D/CollisionNormal:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 5.28784, 14.5504 )
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 5.09921, 10 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" groups=["Player"]]
 position = Vector2( 512, 224 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
@@ -135,31 +186,34 @@ scale = Vector2( 0.727272, 0.727273 )
 texture = ExtResource( 1 )
 hframes = 14
 vframes = 19
-frame = 143
+frame = 42
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "Idle"
 anims/Crouch = SubResource( 1 )
 anims/Dash = SubResource( 2 )
 anims/Die = SubResource( 3 )
 anims/Fall = SubResource( 4 )
 anims/Idle = SubResource( 5 )
 anims/Jump = SubResource( 6 )
+anims/RESET = SubResource( 10 )
 anims/Run = SubResource( 7 )
 
-[node name="CollisionCrouch" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, 20.5 )
-shape = SubResource( 9 )
-
 [node name="CollisionNormal" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( -0.198425, 15.874 )
 shape = SubResource( 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionNormal" type="CollisionShape2D" parent="Area2D"]
 visible = false
 position = Vector2( -0.198425, 15.874 )
 shape = SubResource( 8 )
+
+[node name="CollisionCrouch" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2( 0.5, 20.5 )
+shape = SubResource( 9 )
+disabled = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

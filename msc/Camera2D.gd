@@ -1,6 +1,6 @@
 extends Camera2D
 
-onready var target = owner.get_node("player")
+onready var target = owner.get_node("Player")
 var zoomed = false
 var center = Vector2.ZERO
 
@@ -11,10 +11,10 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("zoom"):
 		if zoomed:
-			target = owner.get_node("player")
+			target = owner.get_node("Player")
 			zoomed = false
 		else:
-			target = owner.get_node("player")
+			target = owner.get_node("Player")
 			zoomed = true
 	
 		

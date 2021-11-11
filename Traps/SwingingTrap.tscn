@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://platform_metroidvania asset pack v1.01/platform_metroidvania asset pack v1.01/miscellaneous sprites/trap_suspended_anim_strip_18.png" type="Texture" id=1]
-[ext_resource path="res://SwingingTrap.gd" type="Script" id=2]
+[ext_resource path="res://Traps/SwingingTrap.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Swing"

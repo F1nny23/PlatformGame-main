@@ -45,13 +45,13 @@ func update_animation():
 			if Input.is_action_pressed("ui_down"):
 				$Sprite/AnimationPlayer.play("Crouch")
 				SPEED = CROUCH_SPEED
-				$CollisionCrouch.disabled = false
-				$CollisionNormal.disabled = true
+				print("bfvbhdfgd")
+		
 			else:
+				print("bd")
 				$Sprite/AnimationPlayer.play("Run")
 				SPEED = MOVE_SPEED
-				$CollisionCrouch.disabled = true
-				$CollisionNormal.disabled = false
+	
 			if motion.x <0:
 				$Sprite.flip_h = true
 			elif motion.x >0:
