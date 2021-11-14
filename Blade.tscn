@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Free/Traps/Saw/On (38x38).png" type="Texture" id=1]
+[ext_resource path="res://Blade.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Spin"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -1.13513, 1.24905, 0, 0, 0, 0, -1.13513, 1.24905, 0, 0, 0, 0, -1.42114, 61.1524, 0, 0, 0, 0, 29.833, 62.4767, 0, 0, 0, 0, 30.6276, 77.8389, 0, 0, 0, 0, 45.725, 78.1038, 0, 0, 0, 0, 45.725, 126.044, 0, 0, 0, 0, -98.362, 126.309, 0, 0, 0, 0, -98.0972, 62.2118, 0, 0, 0, 0, -82.9998, 62.2118, 0, 0, 0, 0, -82.4701, 47.1145, 0, 0, 0, 0, -35.0591, 46.5847, 0, 0, 0, 0, -35.0591, 15.3306, 0, 0, 0, 0, -98.0972, 14.536, 0, 0, 0, 0, -35.0591, 15.0657, 0, 0, 0, 0, -34.5294, 46.3199, 0, 0, 0, 0, -82.4702, 46.055, 0, 0, 0, 0, -82.735, 61.4173, 0, 0, 0, 0, -97.8323, 61.4173, 0, 0, 0, 0, -97.5675, 124.455, 0, 0, 0, 0, 45.1952, 125.515, 0, 0, 0, 0, 45.1952, 79.9579, 0, 0, 0, 0, 30.0978, 78.1038, 0, 0, 0, 0, 29.5681, 62.2119, 0, 0, 0, 0, -2.74554, 61.1524, 0, 0, 0, 0, -1.4212, 1.02786, 0, 0, 0, 0, -1.13513, 1.24905, 0, 0, 0, 0, -2.54639, -0.192719, 0, 0, 0, 0, -1.13513, 1.24905 )
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 17.1181
+
+[node name="Blade" type="Node2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Path2D/PathFollow2D/Sprite")
+playback_speed = 3.0
+anims/RESET = SubResource( 3 )
+anims/Spin = SubResource( 4 )
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( -1.13513, 1.24905 )
+rotation = 1.57557
+
+[node name="Sprite" type="Sprite" parent="Path2D/PathFollow2D"]
+texture = ExtResource( 1 )
+hframes = 8
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Sprite" groups=["Death"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Sprite/Area2D"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Path2D/PathFollow2D/Sprite/Area2D" to="." method="_on_Area2D_body_entered"]

@@ -78,3 +78,5 @@ frame = 1
 autoplay = "Spike"
 anims/RESET = SubResource( 2 )
 anims/Spike = SubResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_Spikes_body_entered"]

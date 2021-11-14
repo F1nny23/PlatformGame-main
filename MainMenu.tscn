@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Fonts/Gready_PERSONAL_USE_ONLY-Regular.otf" type="DynamicFontData" id=1]
-[ext_resource path="res://levels/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://Free/levels/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/MainMenu.tres" type="DynamicFont" id=3]
 
 [sub_resource type="DynamicFont" id=1]

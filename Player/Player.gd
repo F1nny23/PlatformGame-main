@@ -59,11 +59,10 @@ func update_animation():
 	if not is_on_floor():
 		$Sprite/AnimationPlayer.play("Jump")
 
-		
-		 
+func _process(delta):
+	if Input.is_action_just_pressed("reset"):
+		GameStats.reset()
 
-
-
-func _on_Area2D_area_entered(area):
-	if area.is_in_group("Death"):
-		get_tree().reload_current_scene() # Replace with function body.
+#func _on_Area2D_area_entered(area):
+	#if area.is_in_group("Death"):
+		#get_tree().reload_current_scene() # Replace with function body.
