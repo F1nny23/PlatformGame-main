@@ -186,7 +186,7 @@ scale = Vector2( 0.727272, 0.727273 )
 texture = ExtResource( 1 )
 hframes = 14
 vframes = 19
-frame = 42
+frame = 140
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 autoplay = "Idle"
@@ -200,20 +200,19 @@ anims/RESET = SubResource( 10 )
 anims/Run = SubResource( 7 )
 
 [node name="CollisionNormal" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -0.198425, 15.874 )
 shape = SubResource( 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionNormal" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2( -0.198425, 15.874 )
 shape = SubResource( 8 )
+disabled = true
 
 [node name="CollisionCrouch" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2( 0.5, 20.5 )
 shape = SubResource( 9 )
-disabled = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

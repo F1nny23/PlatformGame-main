@@ -4,7 +4,7 @@
 [ext_resource path="res://Free/Traps/Saw/On (38x38).png" type="Texture" id=2]
 [ext_resource path="res://Blade.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Traps/Spikes.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Free/levels/BackWorld2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/BackWorld2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Traps/SwingingTrap.tscn" type="PackedScene" id=7]
 [ext_resource path="res://msc/Camera2D.gd" type="Script" id=8]
@@ -447,7 +447,7 @@ script = ExtResource( 8 )
 position = Vector2( 216, -12 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 359, 239 )
+position = Vector2( 2213, 761 )
 
 [node name="SavePoint2" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1866, 994 )

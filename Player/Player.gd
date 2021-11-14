@@ -51,7 +51,6 @@ func update_animation():
 				print("bd")
 				$Sprite/AnimationPlayer.play("Run")
 				SPEED = MOVE_SPEED
-	
 			if motion.x <0:
 				$Sprite.flip_h = true
 			elif motion.x >0:
@@ -63,6 +62,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("reset"):
 		GameStats.reset()
 
-#func _on_Area2D_area_entered(area):
-	#if area.is_in_group("Death"):
-		#get_tree().reload_current_scene() # Replace with function body.
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("Death"):
+		if GameStats.check_reset() == false:
+			global_position = GameStats.get_spawn().global_position
+			global_position.y -= 20# Replace with function body.
